@@ -81,7 +81,7 @@ cd src
   sudo ln -s /opt/riscv/bin/riscv64-unknown-elf-objdump /opt/riscv/bin/riscv32-unknown-elf-objdump
   cd examples/sw/benchmarks/coremark/ibex
 
-  # Edit file before proceeding - Update line 7 in the core_portme.mak file as shown below
+  # Edit file before proceeding - Update line 7 in the core_portme.mak file as shown below -> RV_ISA = rv32im -> rv32im_zicsr
   ![image](https://github.com/user-attachments/assets/c4ad0125-ae20-4b7f-82c2-00c5e4c56285)
 
   cd ..
