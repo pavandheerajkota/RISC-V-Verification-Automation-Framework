@@ -1,6 +1,6 @@
 EEC283 Project - RISCV Verification Automation Framework
 
-This repository captures the essential information regarding the project proposed for the EEC283 coursework. We (Team 7) are working on automating the RISC-V verification process. We will be using the existing RISC-V IPs and methodologies to demonstrate the proof of concept. A more detailed description of the project can be viewed [here](https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework/blob/640b9225b172323abeb22027dcffc70e9e568391/EEC_283_Project_Proposal%20-%20Group7.pdf).
+This repository captures the essential information regarding the project proposed for the EEC283 coursework. We are working on automating the RISC-V verification process. We will be using the existing RISC-V IPs and methodologies to demonstrate the proof of concept. A more detailed description of the project can be viewed [here](https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework/blob/640b9225b172323abeb22027dcffc70e9e568391/EEC_283_Project_Proposal%20-%20Group7.pdf).
 
 As described in the proposal, we will be using the Ibex core to demonstrate our idea. In particular, we will using the Ibex Simple System infrastructure and its co-simulation environment. To get started, we first need to install the required tools to bring-up the exisitng environment. A detailed step-by-step guide is provided below for reference.
 
@@ -11,16 +11,16 @@ As described in the proposal, we will be using the Ibex core to demonstrate our 
 
 # Setting the required environment variables
 
-export RISCV_TOOL_PREFIX="/opt"
-export RISCV="$RISCV_TOOL_PREFIX/riscv"
-export NUM_CORES="$(nproc)" 
-export VERILATOR_TAG="v4.220"
+  export RISCV_TOOL_PREFIX="/opt"
+  export RISCV="$RISCV_TOOL_PREFIX/riscv"
+  export NUM_CORES="$(nproc)" 
+  export VERILATOR_TAG="v4.220"
 
 # Moving into the installation directory
 
-cd /opt
-mkdir src
-cd src
+  cd /opt
+  mkdir src
+  cd src
 
 # Installing system dependencies (common)
 
