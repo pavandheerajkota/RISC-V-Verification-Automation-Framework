@@ -1,13 +1,15 @@
-EEC283 Project - RISCV Verification Automation Framework
+# EEC283 Project - RISCV Verification Automation Framework
 
 This repository captures the essential information regarding the project proposed for the EEC283 coursework. We are working on automating the RISC-V verification process. We will be using the existing RISC-V IPs and methodologies to demonstrate the proof of concept. A more detailed description of the project can be viewed [here](https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework/blob/640b9225b172323abeb22027dcffc70e9e568391/EEC_283_Project_Proposal%20-%20Group7.pdf).
 
 As described in the proposal, we will be using the Ibex core to demonstrate our idea. In particular, we will using the Ibex Simple System infrastructure and its co-simulation environment. To get started, we first need to install the required tools to bring-up the exisitng environment. A detailed step-by-step guide is provided below for reference.
 
+## Ibex - Spike Co-Simulation Environment Setup
+
 ```
 # Ibex - Spike Co‑Simulation Environment Setup
 
-# Note: Execute the commands in the given order
+# Note: Execute the commands in the given order. Please use the sudo prefix with commands when installing/ downloading under the root directory
 
 # Setting the required environment variables
 
@@ -42,6 +44,7 @@ As described in the proposal, we will be using the Ibex core to demonstrate our 
   make -j"$NUM_CORES"
   make install
   cd ..
+  export PATH="$RISCV_TOOL_PREFIX/verilator-$VERILATOR_TAG/bin:$PATH"
 
 # Installing RISC-V GNU Toolchain
 
@@ -91,3 +94,54 @@ As described in the proposal, we will be using the Ibex core to demonstrate our 
 ```
 After the running the final command, your output should be similar to the one shown below.
 ![image](https://github.com/user-attachments/assets/ef2f6a55-3900-4241-a7b3-5de68f9ea094)
+
+## RISC-V Compliance Test Generation
+
+The following section shows us the steps to automate the testcase generation process for compliance testing, given the cosim environment is already setup.
+
+```
+  git clone https://github.com/imphil/riscv-compliance.git
+  cd riscv-compliance
+  git checkout ibex
+
+  export RISCV_TARGET=ibex
+  export RISCV_ISA=rv32i
+  export RISCV_PREFIX=riscv32-unknown-elf-
+  export TARGET_SIM=<path/to/your/compiled/binary/from/the/setup/process>
+
+  realpath ../examples/sw/simple_system/common/link.ld # Copy the output of this command.
+  cd riscv-test-env/p/
+  cp <Output of realpath command> ./
+  cd -
+  cd riscv-test-suite/rv32imc
+
+  # Edit file before proceeding - Update line 46 in the MakeFile as shown below -> -march = rv32imc -> rv32imc_zicsr
+  ![image](https://github.com/user-attachments/assets/6bd34cdc-fef9-422b-92eb-149378234c39)
+
+  cd -
+  make clean
+  make RISCV_ISA=rv32imc # Please update the value of the RISCV_ISA attribute depending on the extensions supported by the core.
+  find work/rv32imc/ -type f -name "*.elf"
+```
+If the test generation was successful, you should see the output similar to the one below.
+![image](https://github.com/user-attachments/assets/981a3b02-8675-41be-a4c7-eecb9849cac9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
