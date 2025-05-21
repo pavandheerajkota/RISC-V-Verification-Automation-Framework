@@ -123,11 +123,33 @@ The following section shows us the steps to automate the testcase generation pro
   make clean
   make RISCV_ISA=rv32imc # Please update the value of the RISCV_ISA attribute depending on the extensions supported by the core.
   find work/rv32imc/ -type f -name "*.elf"
+  cd .. # Move back to the Ibex home directory
 ```
-If the test generation was successful, you should see the output similar to the one below.
+If the test generation was successful, your find command's output should be similar to the one below.
 
 ![image](https://github.com/user-attachments/assets/981a3b02-8675-41be-a4c7-eecb9849cac9)
 
+## RISC-V Co-simulation Automation
+
+This section captures an initial version of the script that can be used for the co-simulation automation.
+
+```
+# Current directory should be the Ibex home directory
+
+#!/bin/bash
+
+# Define the directory containing the ELF files
+SEARCH_DIR="<path/to/your/directory>"
+
+# Define the path to the simulation binary
+SIM_BINARY="build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system"
+
+# Find all .elf files and run the simulator for each
+find "$SEARCH_DIR" -type f -name "*.elf" | while read -r elf_file; do
+    echo "Running simulation with ELF file: $elf_file"
+    "$SIM_BINARY" --meminit=ram,"$elf_file"
+done
+```
 
 
 
