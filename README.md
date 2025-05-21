@@ -111,7 +111,7 @@ The following section shows us the steps to automate the testcase generation pro
   export TARGET_SIM=<path/to/your/compiled/binary/from/the/setup/process>
 
   realpath ../examples/sw/simple_system/common/link.ld # Copy the output of this command.
-  cd riscv-test-env/p/
+  cd riscv-test-env/p/
   cp <Output of realpath command> ./
   cd -
   cd riscv-test-suite/rv32imc
