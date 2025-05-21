@@ -93,6 +93,7 @@ As described in the proposal, we will be using the Ibex core to demonstrate our 
   build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system --meminit=ram,examples/sw/benchmarks/coremark/coremark.elf
 ```
 After the running the final command, your output should be similar to the one shown below.
+
 ![image](https://github.com/user-attachments/assets/ef2f6a55-3900-4241-a7b3-5de68f9ea094)
 
 ## RISC-V Compliance Test Generation
@@ -124,6 +125,7 @@ The following section shows us the steps to automate the testcase generation pro
   find work/rv32imc/ -type f -name "*.elf"
 ```
 If the test generation was successful, you should see the output similar to the one below.
+
 ![image](https://github.com/user-attachments/assets/981a3b02-8675-41be-a4c7-eecb9849cac9)
 
 
