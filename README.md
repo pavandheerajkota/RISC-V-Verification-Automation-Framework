@@ -151,15 +151,36 @@ find "$SEARCH_DIR" -type f -name "*.elf" | while read -r elf_file; do
 done
 ```
 
+## RISC-V Co-simulation Automation Script
 
+This section describes the features and functionality of the script developed to automate the verification of a RISC-V core. You can check out the script [here](https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework/blob/863ed626cecc2e59072556ba1e3926ffd5271886/src/verify_compliance.py).
 
+For the proof of concept, we have used [Ibex core](https://github.com/lowRISC/ibex) as the validation vehicle. We have used the Ibex Simple System-based cosim environment to test our setup.
 
+To generate the ELFs for testing the various instructions supported by each extension, we have used the [RISCV compliance test suite](https://github.com/imphil/riscv-compliance.git).
 
+The image shown below describes the options supported by our script and their required values.
 
+![image](https://github.com/user-attachments/assets/4871862f-3138-4d60-8610-be3a37473064)
 
+To run the automation, please follow the below steps
 
+```
+# Current directory should be the Ibex home directory and assumes you have already completed the Co-sim environment setup and RISC-V compliance test generation setup
 
+git clone https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework.git
+chmod +x ./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py
+./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py  \
+--sim-binary  <PATH_TO_YOUR_SIMULATION_BINARY>   --compliance <PATH_TO_YOUR_RISCV_COMPLIANCE_BASE_DIR>   --extensions <EXTENSIONS_SUPPORTED_BY_YOUR_CORE>
 
+Example command for Ibex MaxPerf Configuration:
+./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py \
+--sim-binary   /home/pkota/Documents/riscv_verif_automation_framework/ibex/build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system \
+--compliance   /home/pkota/Documents/riscv_verif_automation_framework/ibex/riscv-compliance \
+--extensions IMC
+```
+After the automation flow, your output should be similar to the one shown below
+![image](https://github.com/user-attachments/assets/6aed9e50-56ef-418d-94fb-fa561923b31d)
 
 
 
