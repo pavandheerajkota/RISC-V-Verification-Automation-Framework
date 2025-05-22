@@ -134,20 +134,20 @@ If the test generation was successful, your find command's output should be simi
 This section captures an initial version of the script that can be used for the co-simulation automation.
 
 ```
-# Current directory should be the Ibex home directory
+  # Current directory should be the Ibex home directory
 
-#!/bin/bash
-
-# Define the directory containing the ELF files
-SEARCH_DIR="<path/to/your/directory>"
-
-# Define the path to the simulation binary
-SIM_BINARY="build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system"
-
-# Find all .elf files and run the simulator for each
-find "$SEARCH_DIR" -type f -name "*.elf" | while read -r elf_file; do
-    echo "Running simulation with ELF file: $elf_file"
-    "$SIM_BINARY" --meminit=ram,"$elf_file"
+  #!/bin/bash
+  
+  # Define the directory containing the ELF files
+  SEARCH_DIR="<path/to/your/directory>"
+  
+  # Define the path to the simulation binary
+  SIM_BINARY="build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system"
+  
+  # Find all .elf files and run the simulator for each
+  find "$SEARCH_DIR" -type f -name "*.elf" | while read -r elf_file; do
+      echo "Running simulation with ELF file: $elf_file"
+      "$SIM_BINARY" --meminit=ram,"$elf_file"
 done
 ```
 
@@ -166,18 +166,19 @@ The image shown below describes the options supported by our script and their re
 To run the automation, please follow the below steps
 
 ```
-# Current directory should be the Ibex home directory and assumes you have already completed the Co-sim environment setup and RISC-V compliance test generation setup
+  # Current directory should be the Ibex home directory and assumes you have already completed the Co-sim environment setup and RISC-V compliance test generation setup
 
-git clone https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework.git
-chmod +x ./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py
-./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py  \
---sim-binary  <PATH_TO_YOUR_SIMULATION_BINARY>   --compliance <PATH_TO_YOUR_RISCV_COMPLIANCE_BASE_DIR>   --extensions <EXTENSIONS_SUPPORTED_BY_YOUR_CORE>
+  git clone https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework.git
+  chmod +x ./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py
+  ./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py  \
+  --sim-binary  <PATH_TO_YOUR_SIMULATION_BINARY>   --compliance <PATH_TO_YOUR_RISCV_COMPLIANCE_BASE_DIR>   --extensions 
+  <EXTENSIONS_SUPPORTED_BY_YOUR_CORE>
 
-Example command for Ibex MaxPerf Configuration:
-./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py \
---sim-binary   /home/pkota/Documents/riscv_verif_automation_framework/ibex/build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system \
---compliance   /home/pkota/Documents/riscv_verif_automation_framework/ibex/riscv-compliance \
---extensions IMC
+  # Example command for Ibex MaxPerf Configuration:
+  ./EEC283_RISCV_Verification_Automation_Framework/src/verify_compliance.py \
+  --sim-binary /home/pkota/Documents/riscv_verif_automation_framework/ibex/build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system \
+  --compliance /home/pkota/Documents/riscv_verif_automation_framework/ibex/riscv-compliance \
+  --extensions IMC
 ```
 After the automation flow, your output should be similar to the one shown below
 ![image](https://github.com/user-attachments/assets/6aed9e50-56ef-418d-94fb-fa561923b31d)
