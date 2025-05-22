@@ -148,7 +148,7 @@ This section captures an initial version of the script that can be used for the 
   find "$SEARCH_DIR" -type f -name "*.elf" | while read -r elf_file; do
       echo "Running simulation with ELF file: $elf_file"
       "$SIM_BINARY" --meminit=ram,"$elf_file"
-done
+  done
 ```
 
 ## RISC-V Co-simulation Automation Script
