@@ -1,4 +1,4 @@
-# EEC283 Project - RISCV Verification Automation Framework
+# RISCV Verification Automation Framework
 
 This repository captures the essential information regarding the project proposed for the EEC283 coursework. We are working on automating the RISC-V verification process. We will be using the existing RISC-V IPs and methodologies to demonstrate the proof of concept. A more detailed description of the project can be viewed [here](https://github.com/pavandheerajkota/EEC283_RISCV_Verification_Automation_Framework/blob/640b9225b172323abeb22027dcffc70e9e568391/EEC_283_Project_Proposal%20-%20Group7.pdf).
 
