@@ -106,6 +106,7 @@ The following section shows us the steps to automate the testcase generation pro
   git checkout ibex
 
   export RISCV_TARGET=ibex
+  export RISCV_DEVICE=rv32i
   export RISCV_ISA=rv32i
   export RISCV_PREFIX=riscv32-unknown-elf-
   export TARGET_SIM=<path/to/your/compiled/binary/from/the/setup/process>
