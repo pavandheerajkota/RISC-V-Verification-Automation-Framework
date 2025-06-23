@@ -87,7 +87,7 @@ As described in the proposal, we will be using the Ibex core to demonstrate our 
   # Edit file before proceeding - Update line 7 in the core_portme.mak file as shown below -> RV_ISA = rv32im -> rv32im_zicsr
   ![image](https://github.com/user-attachments/assets/c4ad0125-ae20-4b7f-82c2-00c5e4c56285)
 
-  cd ..
+  cd -
   fusesoc --cores-root=. run --target=sim --setup --build lowrisc:ibex:ibex_simple_system_cosim --RV32E=0 --RV32M=ibex_pkg::RV32MFast
   make -C ./examples/sw/benchmarks/coremark SUPPRESS_PCOUNT_DUMP=1
   build/lowrisc_ibex_ibex_simple_system_cosim_0/sim-verilator/Vibex_simple_system --meminit=ram,examples/sw/benchmarks/coremark/coremark.elf
